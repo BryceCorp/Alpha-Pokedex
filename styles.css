@@ -1,0 +1,124 @@
+/* // add comments in for handover */
+
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #ffffff; /* White background */
+    color: #333;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e3342f; /* Poké Ball red */
+    color: #ffffff; /* White text */
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+main {
+    padding: 2rem 0;
+}
+
+#pokemonGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+}
+
+.pokemon-card {
+    padding: 1rem;
+    border: 1px solid #000000;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #ffffff;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-card img {
+    max-width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.pokemon-card h2 {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+aside {
+    padding: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #e3342f; 
+    color: #ffffff; 
+}
+
+aside h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+aside label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+aside select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #000000;
+    border-radius: 0.5rem;
+    background-color: #ffffff; 
+    color: #333; 
+    transition: border 0.3s ease;
+}
+
+aside select:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+
+footer {
+    padding: 1rem 0;
+    text-align: center;
+    background-color: #e3342f; /* Poké Ball red */
+    color: #ffffff; /* White text */
+}
+
+/* 
+//
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+} */
+/* 
+.pagination a {
+    margin: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #000000; 
+    color: #e3342f; 
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #e3342f; 
+    color: #ffffff;
+} */

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon Viewer</title>
+
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-red-600 text-white p-4 shadow-md z-50">
+        <!-- Add your navigation content here, e.g., a logo or menu links -->
+        <h2 class="text-xl">Pokemon Viewer</h2>
+    </nav>
+
+    <!-- Header -->
+    <header class="mt-20 mb-8 text-center">
+        <h1 class="text-5xl font-bold">Pokemon Viewer</h1>
+        <p class="text-gray-600 mt-2">Discover the world of Pokemon</p>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6">
+        <!-- Grid for Pokemon -->
+        <div class="grid grid-cols-5 gap-6" id="pokemonGrid">
+            <div class="pokemon-card p-4 border border-black rounded-lg shadow hover:shadow-xl transition bg-white">
+                <!-- <img src="" alt="Pokemon Name" class="w-full rounded-t-lg"> -->
+                <h2 class="text-center mt-4 text-2xl font-medium">Pokemon Name</h2>
+            </div>
+        </div>
+    </main>
+
+    <!-- Sidebar -->
+    <aside class="fixed right-0 top-20 w-64 p-6 bg-red-600 text-white shadow-lg z-40">
+        <h3 class="text-xl font-bold mb-4">Filters</h3>
+        <div>
+            <label for="typeFilter">Type:</label>
+            <select id="typeFilter" class="mt-2 border border-black rounded">
+                <option value="grass">Grass</option>
+                <option value="fire">Fire</option>
+                <!-- poke types types -->
+            </select>
+        </div>
+
+        <div class="mt-4">
+            <label for="generationFilter">Generation:</label>
+            <select id="generationFilter" class="mt-2 border border-black rounded">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <!-- poke generations -->
+            </select>
+        </div>
+    </aside>
+
+    <!-- Footer -->
+    <footer class="mt-16 py-6 bg-red-600 text-white text-center">
+        Big & Bold - PokeAPI Viewer © 2023
+    </footer>
+
+
+</body>
+
+</html>
