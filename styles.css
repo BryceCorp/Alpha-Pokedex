@@ -1,5 +1,4 @@
-/* // add comments in for handover */
-
+/* Updated CSS with recommendations integrated */
 
 body {
     margin: 0;
@@ -38,6 +37,9 @@ main {
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: #ffffff;
+    display: flex;
+    flex-direction: column; /* Stack the elements vertically */
+    overflow: hidden; /* Hide overflow content */
 }
 
 .pokemon-card:hover {
@@ -48,6 +50,7 @@ main {
 .pokemon-card img {
     max-width: 100%;
     border-radius: 0.5rem 0.5rem 0 0;
+    margin: 0 auto; /* Center the images */
 }
 
 .pokemon-card h2 {
@@ -91,7 +94,6 @@ aside select:focus {
     outline: none;
 }
 
-
 footer {
     padding: 1rem 0;
     text-align: center;
@@ -99,26 +101,82 @@ footer {
     color: #ffffff; /* White text */
 }
 
-/* 
-//
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 2rem;
-} */
-/* 
-.pagination a {
-    margin: 0 0.5rem;
-    padding: 0.5rem 1rem;
-    border: 1px solid #000000; 
-    color: #e3342f; 
-    text-decoration: none;
-    border-radius: 0.5rem;
-    transition: background-color 0.3s ease;
+.hidden {
+    display: none;
 }
 
-.pagination a:hover {
-    background-color: #e3342f; 
-    color: #ffffff;
-} */
+#pokemonDetailsModal {
+    z-index: 1000; /* To ensure it's above other content */
+}
+
+#pokemonDetailsModal > div {
+    max-width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative; /* To position the close button correctly */
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center the items */
+    gap: 1rem; /* Spacing between elements */
+}
+
+#pokemonDetailsModal img {
+    border-radius: 50%; /* Circular image for Pokemon in modal */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Some shadow for depth */
+}
+
+/* Style for the moveset in the modal */
+#pokemonMoveset li {
+    margin-bottom: 5px; 
+    font-size: 0.9rem; /* Adjust as required */
+}
+
+#closeModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+#pokemonDetailsModal {
+    z-index: 1000; /* To ensure it's above other content */
+}
+
+#pokemonDetailsModal > div {
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative; /* To position the close button correctly */
+}
+
+/* Additional styles for new modal */
+#closeModal {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+#pokemonName {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+#pokemonMoveset {
+    list-style-type: disc;
+    margin-left: 20px;
+}
