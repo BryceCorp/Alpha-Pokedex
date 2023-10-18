@@ -207,8 +207,14 @@ footer {
     border-radius: 4px;
     border: 1px solid #fff;
     background-color: transparent;
-    color: #fff;
+    color: #fff !important;
 }
+
+
+.sidebar select option{
+    color: #000 !important;
+}
+
 
 .sidebar h3 {
     text-align: center;
@@ -232,4 +238,8 @@ footer {
     background-color: #d82a26;
 }
 
+.capitalize {
+    text-transform: capitalize;
+  }
 
+/* Style the dropdown container */

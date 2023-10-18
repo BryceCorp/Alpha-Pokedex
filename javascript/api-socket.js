@@ -1,12 +1,14 @@
+//no longer valid/ necessary as api acces through PHP in pokeapi.php
+
 let currentPage = 1;
 
 function fetchPokemon(page = 1) {
     $.get(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=${(page - 1) * 20}`, function(data) {
-        // Check if the data returned is valid and contains the results key
+        // check if the data returned is valid and contains the results key - modify in future
         if (data && data.results && Array.isArray(data.results)) {
             for (let pokemon of data.results) {
-                // Logic to append each Pokemon to the grid
-                // For simplicity, using jQuery
+                // kogic to append each Pokemon to the grid
+                // for simplicity, using jQuery
                 $('#pokemonGrid').append(`
                     <div class="pokemon-card p-4 border rounded-lg shadow hover:shadow-xl transition bg-white cursor-pointer" data-url="${pokemon.url}">
                         <h2 class="text-center mt-4 text-2xl font-medium">${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>

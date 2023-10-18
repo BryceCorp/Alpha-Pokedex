@@ -1,13 +1,16 @@
 <?php
-// Fetching data from PokeAPI
-$pokemon_list = [];
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+    // Fetching data from PokeAPI
+    $pokemon_list = [];
+    $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-$offset = ($page - 1) * 20; // Calculate the offset for pagination
-$api_url = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=$offset";
-$response = file_get_contents($api_url);
-$data = json_decode($response);
-$pokemon_list = $data->results;
+    $offset = ($page - 1) * 20;
+    $api_url = "https://pokeapi.co/api/v2/pokemon?limit=20&offset=$offset";
+    $response = file_get_contents($api_url);
+    $data = json_decode($response);
+    $pokemon_list = $data->results;
+
+    $types = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", "steel", "fire", "water", "grass", "electric", "psychic", "ice", "dragon", "dark", "fairy"];
+
 ?>
 
 <!DOCTYPE html>
@@ -37,6 +40,7 @@ $pokemon_list = $data->results;
         <h1 class="text-5xl font-bold">Pokemon Viewer</h1>
         <p class="text-gray-600 mt-2">Discover the world of Pokemon</p>
     </header>
+
     <!-- Main Content -->
     <main class="container mx-auto px-6">
         <!-- Grid for Pokemon -->
@@ -44,18 +48,18 @@ $pokemon_list = $data->results;
             <!-- Looping through pokemons -->
             <?php
             if (is_array($pokemon_list)) {
-                foreach ($pokemon_list as $pokemon) : 
+                foreach ($pokemon_list as $pokemon) :
                     // Extracting the Pokemon ID from its URL
                     $parts = explode('/', rtrim($pokemon->url, '/'));
                     $pokemon_id = end($parts);
                     $pokemon_image_url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{$pokemon_id}.png";
-                    ?>
+            ?>
                     <div class="pokemon-card p-4 border rounded-lg shadow hover:shadow-xl transition bg-white cursor-pointer" data-id="<?= $pokemon_id ?>">
                         <!-- Displaying the Pokemon image -->
                         <img src="<?= $pokemon_image_url ?>" alt="<?= ucfirst($pokemon->name) ?>" class="mx-auto w-32 h-32">
                         <h2 class="text-center mt-4 text-2xl font-medium"><?= ucfirst($pokemon->name) ?></h2>
                     </div>
-                <?php endforeach;
+            <?php endforeach;
             }
             ?>
         </div>
@@ -78,12 +82,14 @@ $pokemon_list = $data->results;
         <h3 class="text-xl font-bold mb-4">Filters</h3>
         <div>
             <label for="typeFilter">Type:</label>
-            <select id="typeFilter" class="mt-2 border rounded">
-                <option value="grass">Grass</option>
-                <option value="fire">Fire</option>
+            <select id="typeFilter" class="filterSelect mt-2 border rounded">
+                <?php foreach ($types as $type) : ?>
+                    <option class="filterOptions" value="<?php echo $type; ?>"><?php echo ucfirst($type); ?></option>
+                <?php endforeach; ?>
                 <!-- Add other types as needed -->
             </select>
         </div>
+        <!-- NOT ACTIVE YET!!!!!! -->
         <div class="mt-4">
             <label for="generationFilter">Generation:</label>
             <select id="generationFilter" class="mt-2 border rounded">
@@ -92,47 +98,44 @@ $pokemon_list = $data->results;
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-                <!-- Add more generations as needed -->
             </select>
         </div>
+        <!-- NOT ACTIVE YET!!!!!! -->
         <button class="resetFilters" id="resetFilters">Reset Filters</button>
 
-        <!-- You can expand upon these filters based on what you'd like to achieve -->
 
     </aside>
-    
-<!-- Pokemon Details Modal -->
-<div id="pokemonDetailsModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
-    <div class="bg-white p-8 rounded-xl shadow-2xl w-4/5 max-w-xl">
-        <button id="closeModal" class="absolute top-3 right-3 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-lg focus:outline-none hover:bg-red-600">&times;</button>
-        <img id="pokemonImage" src="" alt="Pokemon Image" class="mx-auto w-40 h-40 object-cover rounded-full shadow-md border border-gray-200 mt-4">
-        <h2 id="pokemonName" class="text-2xl font-semibold text-center mt-6 mb-4">Pokemon Name</h2>
-        <p class="mb-2"><span class="font-semibold">Size:</span> <span id="pokemonSize" class="font-medium">0</span> cm</p>
-        <p class="mb-2"><span class="font-semibold">Weight:</span> <span id="pokemonWeight" class="font-medium">0</span> kg</p>
-        <p class="font-semibold mb-2">Moveset:</p>
-        <ul id="pokemonMoveset" class="list-decimal pl-5"></ul>
+
+    <!-- Pokemon Details Modal -->
+    <div id="pokemonDetailsModal" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-60">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-4/5 max-w-xl">
+            <button id="closeModal" class="absolute top-3 right-3 bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-lg focus:outline-none hover:bg-red-600">&times;</button>
+            <img id="pokemonImage" src="" alt="Pokemon Image" class="mx-auto w-40 h-40 object-cover rounded-full shadow-md border border-gray-200 mt-4">
+            <h2 id="pokemonName" class="capitalize text-2xl font-semibold text-center mt-6 mb-4">Pokemon Name</h2>
+            <p class="mb-2"><span class="font-semibold">Size:</span> <span id="pokemonSize" class="font-medium">0</span> cm</p>
+            <p class="mb-2"><span class="font-semibold">Weight:</span> <span id="pokemonWeight" class="font-medium">0</span> kg</p>
+            <p class="font-semibold mb-2">Moveset:</p>
+            <ul id="pokemonMoveset" class="list-decimal pl-5"></ul>
+        </div>
     </div>
-</div>
 
     <!-- Scripts -->
     <script>
         $(document).ready(function() {
             $('.pokemon-card').on('click', function() {
                 var pokemonId = $(this).data('id');
-                
-                // Use the pokemonId to make an AJAX request and fetch details
-                // Update the #pokemonDetailsModal content with the fetched details and show the modal.
+
             });
         });
     </script>
 
     <!-- Include modal.js -->
-<script src="./javascript/modal.js"></script>
+    <script src="./javascript/modal.js"></script>
     <!-- Include filterData.js -->
-<script src="./javascript/filterData.js"></script>
+    <script src="./javascript/filterData.js"></script>
 
-<!-- Include api-socket.js -->
-<!-- <script src="./javascript/./api-socket.js"></script> -->
+    <!-- <script src="./javascript/./api-socket.js"></script> -->
 
 </body>
+
 </html>
