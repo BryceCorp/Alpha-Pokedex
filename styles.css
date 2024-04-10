@@ -13,7 +13,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     background-color: #e3342f; /* Poké Ball red */
-    color: #ffffff; /* White text */
+    color: #ffffff; 
 }
 
 header {
@@ -39,8 +39,8 @@ main {
     transition: all 0.3s ease;
     background-color: #ffffff;
     display: flex;
-    flex-direction: column; /* Stack the elements vertically */
-    overflow: hidden; /* Hide overflow content */
+    flex-direction: column; 
+    overflow: hidden; 
 }
 
 .pokemon-card:hover {
@@ -51,7 +51,7 @@ main {
 .pokemon-card img {
     max-width: 100%;
     border-radius: 0.5rem 0.5rem 0 0;
-    margin: 0 auto; /* Center the images */
+    margin: 0 auto;
 }
 
 .pokemon-card h2 {
@@ -99,7 +99,7 @@ footer {
     padding: 1rem 0;
     text-align: center;
     background-color: #e3342f; /* Poké Ball red */
-    color: #ffffff; /* White text */
+    color: #ffffff; 
 }
 
 .hidden {
@@ -107,29 +107,28 @@ footer {
 }
 
 #pokemonDetailsModal {
-    z-index: 1000; /* To ensure it's above other content */
+    z-index: 1000;
 }
 
 #pokemonDetailsModal > div {
     max-width: 90%;
     max-height: 80vh;
     overflow-y: auto;
-    position: relative; /* To position the close button correctly */
+    position: relative; 
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center the items */
-    gap: 1rem; /* Spacing between elements */
+    flex-direction: column; 
+    align-items: center;
+    gap: 1rem; 
 }
 
 #pokemonDetailsModal img {
-    border-radius: 50%; /* Circular image for Pokemon in modal */
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Some shadow for depth */
+    border-radius: 50%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); 
 }
 
-/* Style for the moveset in the modal */
 #pokemonMoveset li {
     margin-bottom: 5px; 
-    font-size: 0.9rem; /* Adjust as required */
+    font-size: 0.9rem;
 }
 
 #closeModal {
@@ -148,17 +147,16 @@ footer {
 }
 
 #pokemonDetailsModal {
-    z-index: 1000; /* To ensure it's above other content */
+    z-index: 1000; 
 }
 
 #pokemonDetailsModal > div {
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
-    position: relative; /* To position the close button correctly */
+    position: relative; 
 }
 
-/* Additional styles for new modal */
 #closeModal {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -185,20 +183,18 @@ footer {
 .sidebar {
     position: fixed;
     right: -276px; 
-    top: 100px; /* Moving the filter further down the page */
+    top: 100px;
     width: 340px; 
     transition: right 0.3s ease-out; 
     background-color: #e3342f;
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    padding: 20px 20px 20px 80px; /* Increased padding to the left */
-}
+    padding: 20px 20px 20px 80px; 
 
 .sidebar:hover {
     right: 0; 
 }
 
-/* Dropdown styling */
 .sidebar select {
     width: 80%; 
     margin-left: 10%; 
@@ -210,11 +206,9 @@ footer {
     color: #fff !important;
 }
 
-
 .sidebar select option{
     color: #000 !important;
 }
-
 
 .sidebar h3 {
     text-align: center;
@@ -241,5 +235,3 @@ footer {
 .capitalize {
     text-transform: capitalize;
   }
-
-/* Style the dropdown container */
